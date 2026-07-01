@@ -1,0 +1,48 @@
+{
+  "name": "getmcpauth",
+  "version": "0.1.1",
+  "description": "Drop-in OAuth 2.1 + Dynamic Client Registration for MCP servers, backed by mcpauth.",
+  "license": "MIT",
+  "homepage": "https://getmcpauth.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yilmazali325/getmcpauth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yilmazali325/getmcpauth/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "oauth",
+    "oauth2",
+    "dynamic-client-registration",
+    "mcp-server",
+    "authentication",
+    "authorization"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "LICENSE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "express": "^5.0.0"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@types/express": "^5.0.0",
+    "express": "^5.2.1",
+    "typescript": "^5.7.0"
+  }
+}
