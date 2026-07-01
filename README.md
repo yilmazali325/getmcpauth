@@ -1,5 +1,9 @@
 # mcpauth
 
+[![npm version](https://img.shields.io/npm/v/getmcpauth.svg)](https://www.npmjs.com/package/getmcpauth)
+[![npm downloads](https://img.shields.io/npm/dm/getmcpauth.svg)](https://www.npmjs.com/package/getmcpauth)
+[![license](https://img.shields.io/npm/l/getmcpauth.svg)](https://github.com/yilmazali325/getmcpauth/blob/main/LICENSE)
+
 Drop-in OAuth 2.1 + Dynamic Client Registration ([RFC 7591](https://www.rfc-editor.org/rfc/rfc7591)) for MCP servers, backed by [mcpauth](https://getmcpauth.dev).
 
 Wraps the official [`@modelcontextprotocol/sdk`](https://www.npmjs.com/package/@modelcontextprotocol/sdk)'s `requireBearerAuth` middleware so unauthenticated or invalid requests get rejected with a spec-correct `401` before they ever reach your MCP server's handlers.

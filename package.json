@@ -1,6 +1,6 @@
 {
   "name": "getmcpauth",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Drop-in OAuth 2.1 + Dynamic Client Registration for MCP servers, backed by mcpauth.",
   "license": "MIT",
   "homepage": "https://getmcpauth.dev",
