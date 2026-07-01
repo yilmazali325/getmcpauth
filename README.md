@@ -35,10 +35,30 @@ Get a `registrationSecret` by creating a project at [getmcpauth.dev/dashboard](h
 
 MCP clients (Claude, ChatGPT, custom agent frameworks) then discover your auth setup automatically via `/.well-known/oauth-authorization-server` — no manual client configuration needed.
 
+### Next.js (or any Fetch-API framework)
+
+```ts
+// app/api/mcp/route.ts
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { createMcpAuthHandler } from "getmcpauth";
+
+const handler = createMcpAuthHandler({
+  registrationSecret: process.env.MCPAUTH_SECRET!,
+  buildServer: () => {
+    const server = new McpServer({ name: "my-server", version: "1.0.0" });
+    server.registerTool(/* ... */);
+    return server;
+  },
+});
+
+export { handler as GET, handler as POST, handler as DELETE };
+```
+
 ## API
 
-- **`mcpAuth(options)`** — the middleware above. Successful token verifications are cached in-process (default 30s) so a chatty agent conversation doesn't trigger a network round trip on every tool call.
-- **`McpAuthTokenVerifier`** — implements the official SDK's `OAuthTokenVerifier` interface directly, for non-Express use.
+- **`mcpAuth(options)`** — Express middleware. Successful token verifications are cached in-process (default 30s) so a chatty agent conversation doesn't trigger a network round trip on every tool call.
+- **`createMcpAuthHandler(options)`** — the Next.js/Fetch-API equivalent above, returning a `(request: Request) => Promise<Response>` handler. Same caching behavior as `mcpAuth()`.
+- **`McpAuthTokenVerifier`** — implements the official SDK's `OAuthTokenVerifier` interface directly, for lower-level use.
 - **`mintToken(options)`** — for MCP servers embedded in a product that already has its own users: your backend, which already knows who its logged-in user is, mints a token server-to-server without routing that user through mcpauth's own login.
 - **`protectedResourceMetadata(options)` / `mcpAuthResourceMetadataHandler(options)`** — RFC 9728 resource-metadata helpers.
 

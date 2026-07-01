@@ -6,3 +6,5 @@ export { protectedResourceMetadata, mcpAuthResourceMetadataHandler } from "./res
 export type { ResourceMetadataOptions } from "./resourceMetadata.js";
 export { mintToken } from "./mintToken.js";
 export type { MintTokenOptions, MintedTokenPair } from "./mintToken.js";
+export { createMcpAuthHandler } from "./nextHandler.js";
+export type { McpAuthNextHandlerOptions } from "./nextHandler.js";
